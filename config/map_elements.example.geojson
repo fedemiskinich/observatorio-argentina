@@ -1,0 +1,34 @@
+{
+  "type": "FeatureCollection",
+  "name": "Ejemplo de elementos personalizados",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "ejemplo-edificio-corrientes",
+      "geometry": { "type": "Point", "coordinates": [-58.8341, -27.4692] },
+      "properties": {
+        "name": "Edificio de ejemplo",
+        "category": "building",
+        "importance": "provincial",
+        "status": "unknown",
+        "description": "Reemplace este registro con información verificada.",
+        "source": "Carga manual"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ejemplo-camara-corrientes",
+      "geometry": { "type": "Point", "coordinates": [-58.8388, -27.4636] },
+      "properties": {
+        "name": "Cámara pública de ejemplo",
+        "category": "camera",
+        "importance": "local",
+        "status": "unknown",
+        "description": "Agregue únicamente una transmisión pública y autorizada.",
+        "source": "Carga manual",
+        "sourceUrl": "https://example.org/",
+        "mediaUrl": "https://example.org/"
+      }
+    }
+  ]
+}

@@ -1,413 +1,95 @@
+<div align="center">
+
 # 🇦🇷 Observatorio Argentina
 
-### Plataforma abierta de conciencia situacional, OSINT y análisis geoespacial.
+### Plataforma abierta de conciencia situacional, OSINT y análisis geoespacial
 
-**Observatorio Argentina** es un proyecto abierto de investigación y desarrollo orientado a integrar, visualizar y analizar información territorial proveniente de múltiples fuentes públicas y abiertas.
+**Integrar señales. Visualizar el territorio. Comprender el contexto.**
 
-El objetivo no es simplemente representar información sobre un mapa.
-
-El objetivo es **relacionar señales, agregar contexto y transformar datos dispersos en conocimiento situacional**.
-
-> **Ver el territorio. Integrar las señales. Comprender el contexto.**
+</div>
 
 ---
 
-## 🌎 ¿Qué es Observatorio Argentina?
+## ¿Qué es Observatorio Argentina?
 
-Existe una enorme cantidad de información pública distribuida entre organismos, servicios meteorológicos, cámaras públicas, sistemas de transporte, plataformas de datos abiertos, sensores, fuentes OSINT y servicios geoespaciales.
+**Observatorio Argentina** es un proyecto abierto de investigación y desarrollo orientado a integrar, visualizar y contextualizar información geoespacial proveniente de fuentes públicas y abiertas sobre una misma interfaz territorial.
 
-El problema no siempre es la falta de información.
+El objetivo no es acumular puntos sobre un mapa, sino facilitar la construcción de **conciencia situacional** mediante la combinación de capas, eventos y fuentes con procedencia documentada.
 
-Muchas veces, el problema es que esa información se encuentra **fragmentada**.
+El proyecto parte del código abierto de [God's Eye View](https://github.com/bilawalsidhu/gods-eye-view), de Bilawal Sidhu, distribuido bajo licencia MIT, y desarrolla sobre esa base una adaptación orientada a Argentina, con nuevas capas, criterios de integridad, herramientas y flujos de investigación.
 
-Observatorio Argentina propone una plataforma capaz de integrar diferentes fuentes sobre una misma representación territorial para facilitar su exploración, contextualización y análisis.
+## Capacidades actuales
 
-```text
-FUENTES
-   │
-   ├── Cámaras públicas
-   ├── Datos abiertos
-   ├── Meteorología
-   ├── Eventos ambientales
-   ├── Infraestructura
-   ├── Transporte
-   ├── Sensores
-   ├── Fuentes OSINT
-   └── Servicios geoespaciales
-             │
-             ▼
-       NORMALIZACIÓN
-             │
-             ▼
-        GEOLOCALIZACIÓN
-             │
-             ▼
-         CORRELACIÓN
-             │
-             ▼
-          CONTEXTO
-             │
-             ▼
-   CONCIENCIA SITUACIONAL
+- Visualización geoespacial 2D/3D y navegación territorial.
+- Capas de infraestructura y elementos relevantes.
+- Vuelos, embarcaciones, satélites, sismos y otras señales públicas según disponibilidad de las fuentes.
+- Información ambiental, incluyendo incendios activos y eventos georreferenciados.
+- Integración controlada de cámaras públicas cuando su publicación y reutilización sean verificables.
+- Incorporación manual de edificios, cámaras, organismos, infraestructura crítica, refugios y otros elementos mediante catálogos locales/GeoJSON.
+- Arquitectura extensible para nuevas fuentes y capas.
+- Capacidades experimentales de análisis asistido por IA.
+
+> La presencia de una capa en la plataforma no implica cobertura total, disponibilidad permanente ni carácter oficial. Cada fuente conserva sus propias condiciones, limitaciones y frecuencia de actualización.
+
+## Principios del proyecto
+
+Observatorio Argentina trabaja exclusivamente con fuentes públicas o incorporadas legítimamente por el operador. El proyecto no está diseñado para reconocimiento facial, búsqueda de personas, seguimiento individual ni acceso no autorizado a sistemas o datos.
+
+Toda nueva capa argentina debería documentar, como mínimo, su organismo/proveedor, procedencia, condiciones de uso, frecuencia de actualización, cobertura, limitaciones y naturaleza del dato (observado, estimado, reconstruido o simulado).
+
+## Inicio rápido
+
+Requiere **Node.js 24.14.x o 26.x**.
+
+```bash
+git clone https://github.com/fedemiskinich/observatorio-argentina.git
+cd observatorio-argentina
+npm ci
+npm run doctor
+npm run dev
 ```
 
----
+Luego abrir `http://localhost:4173`.
 
-# 🛰️ Capacidades
+Las claves de proveedores son opcionales para el primer inicio. Cuando se utilicen, deben almacenarse únicamente en `.env` u otros mecanismos locales ignorados por Git. Nunca publiques credenciales reales.
 
-Observatorio Argentina está siendo diseñado como una plataforma modular capaz de incorporar diferentes capas de información.
+En Windows también se incluyen utilidades de inicio y configuración local. Ver [`ARGENTINA.md`](ARGENTINA.md).
 
-Entre las capacidades actualmente investigadas o implementadas se encuentran:
+## Fuentes, datos y atribuciones
 
-- 🗺️ visualización geoespacial 2D y 3D;
-- 🎥 integración de cámaras públicas;
-- 📡 incorporación de fuentes abiertas;
-- 🌧️ información meteorológica y ambiental;
-- 🌊 eventos relacionados con inundaciones;
-- ⚡ representación de infraestructura;
-- 🏛️ edificios y puntos de interés;
-- 🚦 información territorial y de movilidad;
-- 🔎 herramientas OSINT;
-- 📍 incorporación dinámica de elementos geográficos;
-- 🛰️ fuentes geoespaciales;
-- 🤖 experimentación con inteligencia artificial;
-- 📊 análisis y correlación de eventos.
+El **código fuente propio y las modificaciones** se distribuyen bajo licencia MIT, preservando la licencia y el copyright del proyecto original donde corresponde.
 
-La arquitectura está pensada para permitir que nuevas fuentes puedan incorporarse progresivamente mediante conectores y capas independientes.
+Los datasets, modelos 3D, imágenes y servicios externos **no quedan automáticamente relicenciados bajo MIT**. Cada recurso conserva sus términos originales. Consultá:
 
----
-
-# 🧠 De información a contexto
-
-Una de las ideas centrales del proyecto es que un dato aislado suele aportar información limitada.
-
-Una cámara es una fuente.
-
-Una alerta meteorológica es otra.
-
-Un sensor constituye otra señal.
-
-Un evento reportado representa otra pieza de información.
-
-Pero cuando diferentes señales pueden observarse dentro del mismo contexto espacial y temporal, aparece una capacidad diferente:
-
-**conciencia situacional.**
-
-Observatorio Argentina investiga precisamente esa capa de integración.
-
-```text
-Dato
-  ↓
-Señal
-  ↓
-Evento
-  ↓
-Geolocalización
-  ↓
-Contexto
-  ↓
-Correlación
-  ↓
-Conciencia situacional
-```
-
----
-
-# 🏗️ Arquitectura conceptual
-
-La plataforma sigue una arquitectura modular.
-
-```text
-                 OBSERVATORIO ARGENTINA
-
-                         CORE
-                          │
-        ┌─────────────────┼─────────────────┐
-        │                 │                 │
-   CONNECTORS           ENGINE          INTERFACE
-        │                 │                 │
-   Open Data          Geospatial          Map
-   Cameras            Correlation         2D / 3D
-   Weather            Events              Layers
-   Sensors            Analysis            Search
-   Alerts             Context             Timeline
-   OSINT               AI                 Dashboard
-        │
-        ▼
-   EXTERNAL SOURCES
-```
-
-Esta separación busca permitir el desarrollo independiente de nuevas fuentes y capacidades sin modificar necesariamente el núcleo de la plataforma.
-
----
-
-# 🔌 Connectors
-
-Uno de los objetivos del proyecto es construir un ecosistema de conectores.
-
-Un conector permite transformar una fuente externa en información utilizable por Observatorio Argentina.
-
-Ejemplos:
-
-```text
-connectors/
-├── cameras/
-├── weather/
-├── transport/
-├── environment/
-├── open-data/
-├── alerts/
-├── sensors/
-└── osint/
-```
-
-Esto permite que investigadores y desarrolladores puedan contribuir incorporando nuevas fuentes sin necesidad de comprender toda la plataforma.
-
----
-
-# 🇦🇷 ¿Por qué Argentina?
-
-Argentina dispone de numerosos ecosistemas de información pública y datos abiertos distribuidos entre diferentes niveles y organismos.
-
-Observatorio Argentina busca experimentar con mecanismos para integrar esas fuentes desde una perspectiva común:
-
-**el territorio.**
-
-El proyecto no pretende reemplazar las plataformas oficiales ni constituirse en una fuente oficial de información.
-
-Funciona como una plataforma experimental de **integración, visualización e investigación**.
-
----
-
-# 🔬 Investigación
-
-Observatorio Argentina también funciona como laboratorio para investigar temas relacionados con:
-
-- Situational Awareness
-- OSINT
-- GEOINT
-- geospatial intelligence
-- visualización geográfica
-- integración de fuentes abiertas
-- correlación espacio-temporal
-- análisis territorial
-- infraestructura crítica
-- inteligencia artificial aplicada al análisis
-- sistemas de alerta
-- interacción humano-máquina para análisis geoespacial
-
----
-
-# 🤖 Inteligencia Artificial
-
-Una línea experimental del proyecto estudia la incorporación de modelos de inteligencia artificial para asistir en tareas como:
-
-- clasificación de eventos;
-- correlación de señales;
-- análisis contextual;
-- consultas en lenguaje natural;
-- identificación de relaciones entre eventos;
-- generación asistida de informes;
-- priorización de información.
-
-La IA se plantea como una herramienta de asistencia al análisis y no como reemplazo automático del criterio humano.
-
----
-
-# 🔐 Seguridad, privacidad y uso responsable
-
-Observatorio Argentina trabaja exclusivamente con información obtenida mediante mecanismos legítimos y fuentes autorizadas o públicamente accesibles.
-
-El proyecto **no tiene como objetivo vulnerar sistemas, acceder a cámaras privadas, evadir controles de acceso ni obtener información mediante accesos no autorizados**.
-
-Los colaboradores deben respetar:
-
-- legislación aplicable;
-- privacidad;
-- términos de servicio de las fuentes;
-- licencias de datos;
-- restricciones de redistribución;
-- principios de divulgación responsable.
-
-La existencia de información accesible técnicamente no implica necesariamente autorización para su recopilación, almacenamiento o redistribución.
-
-Por esta razón, cada nueva fuente debe ser evaluada antes de incorporarse al proyecto.
-
----
-
-# ⚠️ Infraestructura crítica
-
-La investigación sobre infraestructura debe realizarse desde una perspectiva responsable.
-
-El proyecto evita deliberadamente facilitar:
-
-- acceso no autorizado;
-- explotación de infraestructura;
-- publicación de credenciales;
-- exposición innecesaria de información operacional sensible;
-- identificación de vulnerabilidades explotables.
-
-El objetivo es **investigación, visualización y conciencia situacional**, no facilitar acciones ofensivas.
-
----
-
-# 🚧 Estado del proyecto
-
-**Observatorio Argentina se encuentra en desarrollo activo.**
-
-Actualmente el proyecto debe considerarse:
-
-> Experimental / Research Project
-
-Las interfaces, fuentes, conectores y arquitectura pueden cambiar significativamente durante el desarrollo.
-
-No debe utilizarse como única fuente para decisiones operacionales, emergencias o situaciones donde exista riesgo para personas o infraestructura.
-
----
-
-# 🗺️ Roadmap
-
-Algunas de las líneas previstas:
-
-### Plataforma
-
-- [ ] consolidación de la arquitectura modular;
-- [ ] sistema extensible de conectores;
-- [ ] administración dinámica de capas;
-- [ ] navegación geoespacial avanzada;
-- [ ] mejoras en visualización 3D;
-- [ ] búsqueda territorial.
-
-### Fuentes
-
-- [ ] ampliar fuentes públicas argentinas;
-- [ ] información meteorológica;
-- [ ] eventos ambientales;
-- [ ] transporte;
-- [ ] cámaras públicas;
-- [ ] infraestructura;
-- [ ] sistemas de alertas.
-
-### Análisis
-
-- [ ] correlación temporal;
-- [ ] correlación geográfica;
-- [ ] motor de eventos;
-- [ ] timeline;
-- [ ] análisis asistido por IA;
-- [ ] generación de informes.
-
-### Comunidad
-
-- [ ] documentación para desarrollar conectores;
-- [ ] catálogo de fuentes;
-- [ ] ejemplos;
-- [ ] datasets de demostración;
-- [ ] proceso formal para propuestas de nuevas integraciones.
-
-Consulta también [`ROADMAP.md`](ROADMAP.md).
-
----
-
-# 🤝 Colaborar
-
-Observatorio Argentina es un proyecto abierto.
-
-Son bienvenidas contribuciones de:
-
-**desarrolladores · investigadores · especialistas OSINT · GIS · GEOINT · ciberseguridad · inteligencia artificial · ciencia de datos · infraestructura · meteorología · análisis territorial**
-
-Hay muchas formas de colaborar:
-
-- desarrollar conectores;
-- proponer fuentes;
-- mejorar documentación;
-- reportar errores;
-- crear nuevas capas;
-- investigar datasets;
-- mejorar la interfaz;
-- desarrollar visualizaciones;
-- proponer casos de investigación.
-
-Antes de contribuir, consulta:
-
-[`CONTRIBUTING.md`](CONTRIBUTING.md)
-
----
-
-# 🐛 Issues
-
-GitHub Issues puede utilizarse para:
-
-- reportar errores;
-- proponer funcionalidades;
-- solicitar nuevas fuentes;
-- proponer conectores;
-- discutir mejoras técnicas;
-- documentar problemas de integración.
-
-Para vulnerabilidades de seguridad, **no publiques detalles sensibles mediante un Issue público**.
-
-Consulta [`SECURITY.md`](SECURITY.md).
-
----
-
-# 🧪 Proyecto abierto
-
-Abrir Observatorio Argentina tiene un objetivo adicional:
-
-**permitir que el proyecto evolucione mediante investigación y colaboración interdisciplinaria.**
-
-No se busca solamente publicar código.
-
-Se busca construir una comunidad capaz de experimentar con nuevas formas de integrar y comprender información territorial.
-
----
-
-# 📜 Licencia
-
-El código de **Observatorio Argentina** se distribuye bajo la **MIT License**.
-
-Este proyecto contiene modificaciones y componentes derivados de software open source previamente publicado.
-
-El proyecto reconoce y preserva los avisos de copyright y las licencias correspondientes al software de terceros utilizado.
-
-Consulta:
-
-- [`LICENSE`](LICENSE)
 - [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)
+- [`DATA_SOURCES.md`](DATA_SOURCES.md)
+- [`public/models/README.md`](public/models/README.md)
 
-Los datasets, modelos 3D, imágenes, APIs y otros recursos de terceros **no adquieren automáticamente la licencia MIT del código del proyecto**.
+Algunos datasets incluidos tienen restricciones **NonCommercial**. Si se pretende realizar una distribución o uso comercial, deben revisarse o retirarse esos recursos según sus respectivas licencias.
 
-Cada recurso conserva su licencia, atribución y condiciones de utilización originales.
+## Seguridad y privacidad
 
----
+Antes de reportar una vulnerabilidad o desplegar la plataforma fuera de localhost, consultá [`SECURITY.md`](SECURITY.md). El servidor local puede actuar como intermediario de claves de proveedores y no debe exponerse públicamente sin controles adicionales.
 
-# 🙏 Atribuciones
+## Colaborar
 
-Observatorio Argentina utiliza y extiende tecnologías y proyectos open source.
+El proyecto está abierto a aportes de desarrolladores, investigadores y profesionales de OSINT, GEOINT, GIS, ciberseguridad, inteligencia artificial, datos abiertos y disciplinas relacionadas.
 
-Parte de su base tecnológica deriva del proyecto **God's Eye View**, desarrollado originalmente por **Bilawal Sidhu** y distribuido bajo MIT License.
+Las contribuciones pueden incluir nuevas fuentes públicas, conectores, capas geográficas, mejoras de visualización, documentación, investigación aplicada y correcciones. Ver [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
-Observatorio Argentina incorpora modificaciones, nuevas integraciones, investigación y desarrollo orientados al contexto del proyecto.
+## Estado
 
-Las atribuciones completas de software, modelos, datasets y otros recursos se mantienen en:
+**MVP / proyecto experimental en desarrollo.** Los resultados deben interpretarse considerando la procedencia y limitaciones de cada fuente. Observatorio Argentina no sustituye fuentes oficiales ni constituye por sí mismo información de inteligencia validada.
 
-[`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)
+## Licencia
 
----
-
-# 👤 Autor / Maintainer
-
-**Federico G. Miskinich Favier**
-
-Consultor en Ciberseguridad  
-Investigación aplicada · OSINT · GEOINT · Inteligencia Artificial
+MIT para el código cubierto por el repositorio, con conservación de los avisos de copyright aplicables. Los componentes y datos de terceros mantienen sus licencias originales. Ver [`LICENSE`](LICENSE) y [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
 
 ---
 
-## 🇦🇷 Observatorio Argentina
+<div align="center">
 
-**Ver el territorio. Integrar las señales. Comprender el contexto.**
+**Observatorio Argentina**  
+*Open Situational Awareness · OSINT · GEOINT · Argentina*
 
-Open Source · OSINT · GEOINT · Situational Awareness · Argentina
+</div>
